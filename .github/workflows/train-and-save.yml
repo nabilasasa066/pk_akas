@@ -20,10 +20,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run training script
+      - name: Debug and Run training script
         run: |
+          ls -R  # Perintah ini untuk memunculkan semua daftar file agar kita bisa cek lokasinya
           python preprocessing/automate_Akas.py
 
       - name: Upload model artifact
